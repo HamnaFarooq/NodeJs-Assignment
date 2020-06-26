@@ -6,8 +6,8 @@ const productsCtrl = require('../controllers/productsController.js')
 
 //Products
 router.get('/products', productsCtrl.read)
-// router.get('/products/create', productsCtrl.create)
-// router.post('/products', productsCtrl.store)
+router.get('/products/create', productsCtrl.create)
+router.post('/products', productsCtrl.store)
 // router.get('/products/edit', productsCtrl.edit)
 // router.post('/products/edit', productsCtrl.update)
 // router.get('/products', productsCtrl.delete)

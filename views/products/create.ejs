@@ -1,4 +1,4 @@
-<a href="{{'/products','ProductsController'}}" class="btn"> Go Back </a>
+<a href="/products" class="btn"> Go Back </a>
 
     <div class="container-fluid">
       <div class="container">
@@ -15,13 +15,7 @@
             <input type="text" class="form-control" name="Price" placeholder="Enter Price" required>
           </div>
 
-          @if($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{$error}}
-                </div>
-            @endforeach
-          @endif
+          <!-- errors should be displayed here -->
 
           <button type="submit" class="btn btn-primary">Submit</button>
 

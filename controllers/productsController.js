@@ -10,16 +10,25 @@ module.exports.read = (req, res) => {
     });
 }
 
-// module.exports.create = (req, res) => {
-//     let sql = "SELECT * FROM Table ORDER BY ID DESC LIMIT 1";
-//     let id = int(id) + 1; 
-//     let data = {Productname: req.body.Productname, Price: req.body.Price};
-//     let sql = "INSERT INTO products SET ?";
-//     let query = conn.query(sql, data,(err, results) => {
-//     if(err) throw err;
-//     res.redirect('/');
-// });
-// }
+module.exports.create = (req, res) => {
+    res.render('products/create')
+  }
+
+module.exports.store = (req, res) => {
+    let sql = "SELECT * FROM products ORDER BY Productid DESC LIMIT 1" ;
+    // let newid = 1;
+    let last = conn.query(sql, (err, results) => {
+        if(err) throw err;
+        const data = JSON.parse(JSON.stringify(req.body));
+        let newid = 'p' + (parseInt((results[0].Productid).substr(1)) + 1) ;
+        let putdata = {Productname: data.Productname, Price: data.Price, Productid: newid };
+        let sql2 = "INSERT INTO products SET ?";
+        let query = conn.query(sql2, putdata,(err, results) => {
+            if(err) throw err;
+            res.send('stored');
+        });
+    });
+}
 
   module.exports.update = (req, res) => {
     res.send('update')
