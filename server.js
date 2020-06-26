@@ -2,6 +2,7 @@ const path = require('path')
 const indexRouter = require('./routes/routes')
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
 const PORT = process.env.PORT || 5000
 // Connect to DB
@@ -14,6 +15,10 @@ app.set('layout', path.join(__dirname, 'views', 'layouts', 'layout'))
 app.use(expressLayouts);
 // Set public directory
 app.use(express.static(path.join(__dirname,'public')))
+// body Parser
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 // Set Router
 app.use('/', indexRouter)
 
