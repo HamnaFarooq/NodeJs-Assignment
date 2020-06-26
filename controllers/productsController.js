@@ -30,13 +30,23 @@ module.exports.store = (req, res) => {
     });
 }
 
-  module.exports.update = (req, res) => {
-    res.send('update')
-  }
+module.exports.edit = (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    let sql = "SELECT * FROM products WHERE Productid = ? LIMIT 1";
+    let query = conn.query(sql, id, (err, results) => {
+      if(err) throw err;
+      res.render('products/edit',{ product: results[0] });
+    });
+}
 
-  module.exports.delete = (req, res) => {
+module.exports.update = (req, res) => {
+    res.send('update')
+}
+
+module.exports.delete = (req, res) => {
     res.send('delete')
-  }
+}
 
 
 //   //route for insert data
