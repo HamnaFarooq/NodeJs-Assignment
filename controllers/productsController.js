@@ -16,7 +16,6 @@ module.exports.create = (req, res) => {
 
 module.exports.store = (req, res) => {
     let sql = "SELECT * FROM products ORDER BY Productid DESC LIMIT 1" ;
-    // let newid = 1;
     let last = conn.query(sql, (err, results) => {
         if(err) throw err;
         const data = JSON.parse(JSON.stringify(req.body));
@@ -32,7 +31,6 @@ module.exports.store = (req, res) => {
 
 module.exports.edit = (req, res) => {
     const id = req.params.id;
-    console.log(id);
     let sql = "SELECT * FROM products WHERE Productid = ? LIMIT 1";
     let query = conn.query(sql, id, (err, results) => {
       if(err) throw err;
@@ -41,7 +39,13 @@ module.exports.edit = (req, res) => {
 }
 
 module.exports.update = (req, res) => {
-    res.send('update')
+  const id = req.params.id;
+  const data = JSON.parse(JSON.stringify(req.body));
+  let sql = "UPDATE products SET Productname='"+data.Productname+"', Price='"+data.Price+"' WHERE Productid= '"+id+"'";
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+    res.redirect('/products');
+  });
 }
 
 module.exports.delete = (req, res) => {
