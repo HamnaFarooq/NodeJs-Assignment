@@ -17,9 +17,7 @@
                     <h5 class="card-title"><%= products[i].Productname %></h5>
                     <p class="card-text"><%= product.Price %></p>
                     <a href="/products/<%= product.Productid %>/edit" class="btn btn-primary">Edit</a>
-                    <form class="" action="/products/<%= product.Productid %>" method="post">
-                        <button type="submit" class="btn btn-danger" name="button">Delete</button>
-                    </form>
+                    <a href="/products/<%= product.Productid %>/delete" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>

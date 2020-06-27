@@ -10,7 +10,7 @@ router.get('/products/create', productsCtrl.create)
 router.post('/products', productsCtrl.store)
 router.get('/products/:id/edit', productsCtrl.edit)
 router.post('/products/:id', productsCtrl.update)
-// router.get('/products', productsCtrl.delete)
+router.get('/products/:id/delete', productsCtrl.delete)
 
 // Home
 router.get('/', mainCtrl.home)
