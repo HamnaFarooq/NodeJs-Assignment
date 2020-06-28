@@ -1,58 +1,58 @@
 const conn = require('../models/database.js')
 
 module.exports.read = (req, res) => {
-    let sql = "SELECT * FROM products";
+    let sql = "SELECT * FROM cafe";
     let query = conn.query(sql, (err, results) => {
       if(err) throw err;
-      res.render('products/index',{
-        products: results
+      res.render('cafe/index',{
+        cafes: results
       });
     });
 }
 
 module.exports.create = (req, res) => {
-    res.render('products/create')
+    res.render('cafe/create')
   }
 
 module.exports.store = (req, res) => {
-    let sql = "SELECT * FROM products ORDER BY Productid DESC LIMIT 1" ;
+    let sql = "SELECT * FROM cafe ORDER BY CafeId DESC LIMIT 1" ;
     let last = conn.query(sql, (err, results) => {
         if(err) throw err;
         const data = JSON.parse(JSON.stringify(req.body));
-        let newid = 'p' + (parseInt((results[0].Productid).substr(1)) + 1) ;
-        let putdata = {Productname: data.Productname, Price: data.Price, Productid: newid };
-        let sql2 = "INSERT INTO products SET ?";
+        let newid = parseInt(results[0].CafeId) + 1 ;
+        let putdata = {Cafename: data.Cafename, Cafelocation: data.Cafelocation, CafeId: newid };
+        let sql2 = "INSERT INTO cafe SET ?";
         let query = conn.query(sql2, putdata,(err, results) => {
             if(err) throw err;
-            res.redirect('/products');
+            res.redirect('/cafes');
         });
     });
 }
 
 module.exports.edit = (req, res) => {
     const id = req.params.id;
-    let sql = "SELECT * FROM products WHERE Productid = ? LIMIT 1";
+    let sql = "SELECT * FROM cafe WHERE CafeId = ? LIMIT 1";
     let query = conn.query(sql, id, (err, results) => {
       if(err) throw err;
-      res.render('products/edit',{ product: results[0] });
+      res.render('cafe/edit',{ cafe: results[0] });
     });
 }
 
 module.exports.update = (req, res) => {
   const id = req.params.id;
   const data = JSON.parse(JSON.stringify(req.body));
-  let sql = "UPDATE products SET Productname='"+data.Productname+"', Price='"+data.Price+"' WHERE Productid= '"+id+"'";
+  let sql = "UPDATE cafe SET Cafename='"+data.Cafename+"', Cafelocation='"+data.Cafelocation+"' WHERE CafeId= '"+id+"'";
   let query = conn.query(sql, (err, results) => {
     if(err) throw err;
-    res.redirect('/products');
+    res.redirect('/cafes');
   });
 }
 
 module.exports.delete = (req, res) => {
   const id = req.params.id;
-  let sql = "DELETE FROM products WHERE Productid = ?";
+  let sql = "DELETE FROM cafe WHERE CafeId = ?";
   let query = conn.query(sql,id, (err, results) => {
     if(err) throw err;
-      res.redirect('/products');
+      res.redirect('/cafes');
   });
 }

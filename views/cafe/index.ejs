@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="title m-b-md">
+        Cafés
+    </div>
+
+    <div class="row">
+        <a href="/cafes/create" class="btn btn-primary">Add another Cafe</a>
+    </div>
+
+    <div class="row">
+        <% for(var i=0; i < cafes.length; i++) { const cafe = cafes[i] %>
+
+        <div class="col col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%-cafe.Cafename %></h5>
+                    <p class="card-text"><%-cafe.Cafelocation%></p>
+                    <a href="/cafes/<%-cafe.CafeId%>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/cafes/<%-cafe.CafeId%>/delete" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        <% } %>
+
+    </div>
+
+
+
+</div>
