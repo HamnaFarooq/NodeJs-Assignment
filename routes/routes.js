@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+//Societies
+const societiesCtrl = require('../controllers/societiesController.js')
+router.get('/societies', societiesCtrl.read)
+router.get('/societies/create', societiesCtrl.create)
+router.post('/societies', societiesCtrl.store)
+router.get('/societies/:id/edit', societiesCtrl.edit)
+router.post('/societies/:id', societiesCtrl.update)
+router.get('/societies/:id/delete', societiesCtrl.delete)
+
 //Cafes
 const cafesCtrl = require('../controllers/cafeController.js')
 router.get('/cafes', cafesCtrl.read)

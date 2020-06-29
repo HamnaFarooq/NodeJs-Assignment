@@ -1,5 +1,3 @@
-@extends('layouts.layout')
-@section('content')
 <div class="content">
     <div class="title m-b-md">
         Societies
@@ -9,27 +7,23 @@
     </div>
 
     <div class="row">
-        @foreach ( $societies as $society )
+        <% for(var i=0; i < societies.length; i++) { const society = societies[i] %>
+
         <div class="col col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{$society->socname}}</h5>
-                    <p class="card-text">{{$society->type}}</p>
-                    <a href="/societies/{{$society->socid}}/edit" class="btn btn-primary">Edit</a>
-                    <form class="" action="/societies/{{$society->socid}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger" name="button">Delete</button>
-                    </form>
+                    <h5 class="card-title"><%- society.socname %></h5>
+                    <p class="card-text"><%- society.type %> </p>
+                    <a href="/societies/<%- society.socid %>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/societies/<%- society.socid %>/delete" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
 
-        @endforeach
+        <% } %>
 
     </div>
 
 
 
 </div>
-@endsection
