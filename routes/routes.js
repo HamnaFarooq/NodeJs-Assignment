@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+//Programs
+const programCtrl = require('../controllers/programController.js')
+router.get('/program', programCtrl.read)
+router.get('/program/create', programCtrl.create)
+router.post('/program', programCtrl.store)
+router.get('/program/:id/edit', programCtrl.edit)
+router.post('/program/:id', programCtrl.update)
+router.get('/program/:id/delete', programCtrl.delete)
+
 //Societies
 const societiesCtrl = require('../controllers/societiesController.js')
 router.get('/societies', societiesCtrl.read)

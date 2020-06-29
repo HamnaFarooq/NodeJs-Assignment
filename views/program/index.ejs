@@ -1,0 +1,27 @@
+<div class="content">
+    <div class="title m-b-md">
+        Programs
+    </div>
+
+    <div class="row">
+        <a href="/program/create" class="btn btn-primary">Add another program</a>
+    </div>
+
+    <div class="row">
+        <% for(var i=0; i < programs.length; i++) { const program = programs[i] %>
+
+        <div class="col col-md-2" style=" min-width:25rem;border:solid grey 1px; padding:10px; border-radius:10px; margin:5px;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%- program.ptitle %></h5>
+                    <p class="card-text"><%- program.duration %></p>
+                    <a href="/program/<%- program.pid %>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/program/<%- program.pid %>/delete" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        <%}%>
+
+    </div>
+</div>
