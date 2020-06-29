@@ -1,5 +1,3 @@
-@extends('layouts.layout')
-@section('content')
 <div class="content">
     <div class="title m-b-md">
         books
@@ -10,7 +8,7 @@
     </div>
 
     <div class="row">
-        @foreach ( $books as $book )
+        <% for(var i=0; i < societies.length; i++) { const society = societies[i] %>
 
         <div class="col col-md-3">
             <div class="card">
@@ -21,30 +19,13 @@
                     <p class="card-text">By:{{$book->Publisher}}</p>
                     <p class="card-text">{{$book->copies}} copies</p>
                     <a href="/books/{{$book->Isbn}}/edit" class="btn btn-primary">Edit</a>
-                    <form class="" action="/books/{{$book->Isbn}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger" name="button">Delete</button>
-                    </form>
+                    <a href="/books/{{$book->Isbn}}/delete" class="btn btn-danger">Delete</a>
+                    
                 </div>
             </div>
         </div>
 
-        @endforeach
+        <% } %>
 
     </div>
-
-
-
 </div>
-@endsection
-
-
-<!-- <form class="" action="/books/{{$book->bookid}}/edit" method="post">
-    @csrf
-    @method('get')
-    <input type="hidden" name="bookid" value="{{$book->bookid}}">
-    <input type="hidden" name="bookname" value="{{$book->bookname}}">
-    <input type="hidden" name="Price" value="{{$book->Price}}">
-    <button type="submit" class="card-link btn btn-primary">Submit</button>
-</form> -->

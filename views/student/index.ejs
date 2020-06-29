@@ -1,5 +1,3 @@
-@extends('layouts.layout')
-@section('content')
 <div class="content">
     <div class="title m-b-md">
         student
@@ -9,7 +7,7 @@
     </div>
 
     <div class="row">
-        @foreach ( $students as $student )
+        <% for(var i=0; i < societies.length; i++) { const society = societies[i] %>
 
         <div class="col col-md-3">
             <div class="card">
@@ -21,11 +19,7 @@
             </div>
         </div>
 
-        @endforeach
+        <%}%>
 
     </div>
-
-
-
 </div>
-@endsection
