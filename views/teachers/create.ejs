@@ -1,13 +1,9 @@
-@extends('layouts.layout')
-@section('content')
-
-<a href="{{'/teachers','TeachersController'}}" class="btn"> Go Back </a>
+<a href="teachers" class="btn"> Go Back </a>
 
     <div class="container-fluid">
       <div class="container">
         <h2>Add Teacher</h2>
-        <form action="{{'/teachers','TeachersController'}}" method="POST">
-            @csrf
+        <form action="/teachers" method="POST">
 
           <div class="form-group">
             <label for="Firstname">First Name:</label>
@@ -29,29 +25,14 @@
               <select class="form-control" name="Experience">
                   <option value="">---- Years ----</option>
                   <option value="1 year"> 1 year </option>
-                    @php
-                        for ($i=2; $i<=100; $i++)
-                        {
-                            @endphp
-                            <option value="<?php echo $i;?> years"><?php echo $i;?> years </option>
-                            @php
-                        }
-                    @endphp
+                  <% for(var i=2; i <= 100; i++) { %>
+                    <option value="<%- i %>" > <%- i %> years </option>
+                   <% } %>
               </select>
           </div>
-
-          @if($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{$error}}
-                </div>
-            @endforeach
-          @endif
 
           <button type="submit" class="btn btn-primary">Submit</button>
 
         </form>
         </div>
     	</div>
-
-@endsection

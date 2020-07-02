@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+//Teachers
+const teachersCtrl = require('../controllers/teachersController.js')
+router.get('/teachers', teachersCtrl.read)
+router.get('/teachers/create', teachersCtrl.create)
+router.post('/teachers', teachersCtrl.store)
+router.get('/teachers/:id/edit', teachersCtrl.edit)
+router.post('/teachers/:id', teachersCtrl.update)
+router.get('/teachers/:id/delete', teachersCtrl.delete)
+
 //Sessions
 const sessionsCtrl = require('../controllers/sessionsController.js')
 router.get('/sessions', sessionsCtrl.read)

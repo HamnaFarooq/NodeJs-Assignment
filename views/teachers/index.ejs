@@ -8,21 +8,21 @@
     </div>
 
     <div class="row">
-        <% for(var i=0; i < societies.length; i++) { const society = societies[i] %>
+        <% for(var i=0; i < teachers.length; i++) { const teacher = teachers[i] %>
 
         <div class="col col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{$teacher->Firstname}}  {{$teacher->Lastname}}</h5>
-                    <p class="card-text">{{$teacher->Designation}}</p>
-                    <p class="card-text">{{$teacher->Experience}}</p>
-                    <a href="/teachers/{{$teacher->TId}}/edit" class="btn btn-primary">Edit</a>
-                    <a href="/books/{{$book->Isbn}}/delete" class="btn btn-danger">Delete</a>
+                    <h5 class="card-title"><%-teacher.Firstname%>  <%-teacher.Lastname%></h5>
+                    <p class="card-text"><%-teacher.Designation%></p>
+                    <p class="card-text"><%-teacher.Experience%></p>
+                    <a href="/teachers/<%-teacher.TId%>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/teachers/<%-teacher.TId%>/delete" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
 
-        @endforeach
+        <%}%>
 
     </div>
 </div>
