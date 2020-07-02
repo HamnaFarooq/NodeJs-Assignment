@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+//Types
+const typeCtrl = require('../controllers/typeController.js')
+router.get('/type', typeCtrl.read)
+router.get('/type/create', typeCtrl.create)
+router.post('/type', typeCtrl.store)
+router.get('/type/:id/edit', typeCtrl.edit)
+router.post('/type/:id', typeCtrl.update)
+router.get('/type/:id/delete', typeCtrl.delete)
+
 //Pages
 const pagesCtrl = require('../controllers/pagesController.js')
 router.get('/pages', pagesCtrl.read)

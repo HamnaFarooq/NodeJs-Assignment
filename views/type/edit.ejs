@@ -1,0 +1,17 @@
+<a href="/type" class="btn"> Go Back </a>
+
+    <div class="container-fluid">
+      <div class="container">
+        <h2>Edit type</h2>
+        <form action="/type/<%-type.tid%>" method="POST">
+
+          <div class="form-group">
+              <label for="tname">type Name:</label>
+              <input type="text" class="form-control" name="tname" value="<%-type.tname%>" placeholder="Enter type name" required pattern="[[A-Z]+[a-z]+[0-9]]{15}">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Update</button>
+
+        </form>
+        </div>
+    	</div>

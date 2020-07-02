@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="title m-b-md">
+        types
+    </div>
+
+    <div class="row">
+        <a href="/type/create" class="btn btn-primary">Add another type</a>
+    </div>
+
+    <div class="row">
+        <% for(var i=0; i < types.length; i++) { const type = types[i] %>
+
+        <div class="col col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%-type.tname%></h5>
+                    <a href="/type/<%-type.tid%>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/type/<%-type.tid%>/delete" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+
+        <%}%>
+
+    </div>
+</div>
