@@ -1,13 +1,9 @@
-@extends('layouts.layout')
-@section('content')
-
-<a href="{{'/sessions','sessionsController'}}" class="btn"> Go Back </a>
+<a href="sessions" class="btn"> Go Back </a>
 
 <div class="container-fluid">
     <div class="container">
         <h2>Add session</h2>
-        <form action="{{'/sessions','sessionsController'}}" method="POST">
-            @csrf
+        <form action="/sessions" method="POST">
 
             <div class="form-group">
                 <label for="ptitle">Session Name:</label>
@@ -34,18 +30,8 @@
                 </select>
             </div>
 
-            @if($errors->any())
-            @foreach ($errors->all() as $error)
-            <div class="alert alert-danger">
-                {{$error}}
-            </div>
-            @endforeach
-            @endif
-
             <button type="submit" class="btn btn-primary">Submit</button>
 
         </form>
     </div>
 </div>
-
-@endsection

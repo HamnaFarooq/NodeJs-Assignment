@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+//Sessions
+const sessionsCtrl = require('../controllers/sessionsController.js')
+router.get('/sessions', sessionsCtrl.read)
+router.get('/sessions/create', sessionsCtrl.create)
+router.post('/sessions', sessionsCtrl.store)
+router.get('/sessions/:id/edit', sessionsCtrl.edit)
+router.post('/sessions/:id', sessionsCtrl.update)
+router.get('/sessions/:id/delete', sessionsCtrl.delete)
+
 //Programs
 const programCtrl = require('../controllers/programController.js')
 router.get('/program', programCtrl.read)
