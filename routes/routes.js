@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+//Pages
+const pagesCtrl = require('../controllers/pagesController.js')
+router.get('/pages', pagesCtrl.read)
+router.get('/pages/create', pagesCtrl.create)
+router.post('/pages', pagesCtrl.store)
+router.get('/pages/:id/edit', pagesCtrl.edit)
+router.post('/pages/:id', pagesCtrl.update)
+router.get('/pages/:id/delete', pagesCtrl.delete)
+
 //Teachers
 const teachersCtrl = require('../controllers/teachersController.js')
 router.get('/teachers', teachersCtrl.read)

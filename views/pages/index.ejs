@@ -8,19 +8,19 @@
     </div>
 
     <div class="row">
-        <% for(var i=0; i < societies.length; i++) { const society = societies[i] %>
+        <% for(var i=0; i < pages.length; i++) { const page = pages[i] %>
 
         <div class="col col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{$page->pname}}</h5>
-                    <a href="/pages/{{$page->pid}}/edit" class="btn btn-primary">Edit</a>
-                    <a href="/books/{{$book->Isbn}}/delete" class="btn btn-danger">Delete</a>
+                    <h5 class="card-title"><%-page.pname%></h5>
+                    <a href="/pages/<%-page.pid%>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/pages/<%-page.pid%>/delete" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
 
-        <%}%
+        <%}%>
 
     </div>
 </div>
